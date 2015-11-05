@@ -1,0 +1,45 @@
+(function () {
+  'use strict';
+
+  angular
+    .module('thinkster', [
+      'thinkster.config',
+      'thinkster.routes',
+      'thinkster.authentication',
+      'thinkster.layout',
+      'thinkster.posts',
+      'thinkster.utils',
+      'thinkster.profiles'
+    ]);
+
+
+  angular
+    .module('thinkster.config', []);
+
+  angular
+    .module('thinkster.routes', ['ngRoute']);
+    
+//// This is a "run block" it handles the set up process    
+
+  angular
+      .module('thinkster')
+      .run(run);
+    
+    run.$inject = ['$http'];
+    
+    /**
+    * @name run
+    * @desc Update xsrf $http headers to align with Django's defaults
+    * 'X-CSRFToken and csrftoken is WHAT DJANGO EXPECTS FROM AN HTTP SERVICE
+    */
+    function run($http) {
+      $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+      $http.defaults.xsrfCookieName = 'csrftoken';
+    }
+
+
+
+    
+    
+    
+})();
