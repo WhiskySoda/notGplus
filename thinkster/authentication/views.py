@@ -9,10 +9,10 @@ from django.contrib.auth import authenticate, login, logout
 
 class AccountViewSet(viewsets.ModelViewSet):
     ### syntactic sugar for the url and this replaces the ID attribute
-    lookup_field = 'username' 
-    
+    lookup_field = 'username'
     queryset = Account.objects.all()
-    serializerClass = AccountSerializer
+    serializer_class = AccountSerializer
+
     
     #### SAFE METHODS is an array exposed by Django Restframework
 
@@ -34,14 +34,13 @@ class AccountViewSet(viewsets.ModelViewSet):
         
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
-            
-            return Response(seralier.validated_data, status=status.HTTP_201_CREATED)
-            
-            
+
+            return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+
         return Response({
-            'status': 'Bad Request',
-            'message' : 'Account could not be created with received data.'
-            }, status=status.HTTP_400_BAD_REQUEST)
+            'status': 'Bad request',
+            'message': 'Account could not be created with received data.'
+        }, status=status.HTTP_400_BAD_REQUEST)
     
     
 

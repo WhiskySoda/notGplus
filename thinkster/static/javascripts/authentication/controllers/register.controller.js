@@ -2,6 +2,8 @@
 * Register controller
 * @namespace thinkster.authentication.controllers
 */
+/*global angular*/
+
 (function () {
   'use strict';
 

@@ -1,7 +1,3 @@
-/**
-* IndexController
-* @namespace thinkster.layout.controllers
-*/
 (function () {
   'use strict';
 

@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
 
@@ -24,6 +24,7 @@ class AccountManager(BaseUserManager):
     def create_superuser(self, email, password, **kwargs):
         account = self.create_user(email, password, **kwargs)
 
+        account.is_superuser=True
         account.is_admin=True
         account.is_staff=True
         account.save()
@@ -31,7 +32,7 @@ class AccountManager(BaseUserManager):
         return account
         
         
-class Account(AbstractBaseUser):
+class Account(AbstractBaseUser, PermissionsMixin):
         email = models.EmailField(unique=True)
         username = models.CharField(max_length=40, unique=True)
         

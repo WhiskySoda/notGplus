@@ -1,4 +1,4 @@
-**
+/**
 * PostsController
 * @namespace thinkster.posts.controllers
 */

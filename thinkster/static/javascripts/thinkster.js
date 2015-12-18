@@ -37,9 +37,4 @@
       $http.defaults.xsrfCookieName = 'csrftoken';
     }
 
-
-
-    
-    
-    
 })();
