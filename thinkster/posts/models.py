@@ -12,4 +12,4 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return self.content
+        return '{0}'.format(self.content)

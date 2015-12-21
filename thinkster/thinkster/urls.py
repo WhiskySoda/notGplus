@@ -32,7 +32,7 @@ urlpatterns = patterns(
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
     url(r'^api/v1/', include(accounts_router.urls)),
     ##### we need a nested router which is currently not supported by the standard Django Rest FrameWork
-    url(r'^/api/v1/', include(router.urls)), 
+    url(r'^api/v1/', include(router.urls)), 
     url(r'^admin/', include(admin.site.urls)),
     url('^.*$', IndexView.as_view(), name='index'),
 )
